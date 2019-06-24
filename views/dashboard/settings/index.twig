@@ -1,0 +1,90 @@
+{% extends 'dashboard/layout/base.twig' %}
+
+{% block content %}
+  <!-- CARDS -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 col-xl-12">
+
+        <!-- Goals -->
+        <div class="card">
+          <div class="card-header">
+            <div class="row align-items-center">
+              <div class="col">
+
+                <!-- Title -->
+                <h4 class="card-header-title">
+                  Manage Facebook Live Comm
+                </h4>
+
+              </div>
+              <div class="col-auto">
+
+                <!-- Button -->
+                <a href="/dashboard" class="btn btn-sm btn-white">
+                  Cancel
+                </a>
+
+              </div>
+            </div> <!-- / .row -->
+          </div>
+          <div class="card-body">
+            <form method="post" action="/dashboard/settings/edit">
+              <div class="form-group">
+                <label for="access_token">Page Access Token</label>
+                <input name="access_token" type="text" class="form-control" id="access_token" placeholder="Page Access Token" value="{{ projectSetting.access_token }}">
+              </div>
+              <div class="form-group">
+                <label for="post_id">Post ID</label>
+                <input name="post_id" type="text" class="form-control" id="post_id" placeholder="Post ID" value="{{ projectSetting.post_id }}">
+              </div>
+              <div class="form-group">
+                <label for="phase.one">Phase 1</label>
+                <input name="phase.one" type="text" class="form-control" id="phase.one" placeholder="Phase 1" value="{{ projectSetting.phase.one }}">
+              </div>
+              <div class="form-group">
+                <label for="phase.two">Phase 2</label>
+                <input name="phase.two" type="text" class="form-control" id="phase.two" placeholder="Phase 2" value="{{ projectSetting.phase.two }}">
+              </div>
+              <div class="form-group">
+                <label for="phase.three">Phase 3</label>
+                <input name="phase.three" type="text" class="form-control" id="phase.three" placeholder="Phase 3" value="{{ projectSetting.phase.three }}">
+              </div>
+              <div class="form-group">
+                <label for="phase.four">Phase 4</label>
+                <input name="phase.four" type="text" class="form-control" id="phase.four" placeholder="Phase 4" value="{{ projectSetting.phase.four }}">
+              </div>
+              <div class="form-group">
+                <label for="phase.five">Phase 5</label>
+                <input name="phase.five" type="text" class="form-control" id="phase.five" placeholder="Phase 5" value="{{ projectSetting.phase.five }}">
+              </div>
+              <div class="form-group">
+                <label for="phase.six">Phase 6</label>
+                <input name="phase.six" type="text" class="form-control" id="phase.six" placeholder="Phase 6" value="{{ projectSetting.phase.six }}">
+              </div>
+              <div class="form-group">
+                <label for="phase.seven">Phase 7</label>
+                <input name="phase.seven" type="text" class="form-control" id="phase.seven" placeholder="Phase 7" value="{{ projectSetting.phase.seven }}">
+              </div>
+              <div class="form-group">
+                <label for="phase.eight">Phase 8</label>
+                <input name="phase.eight" type="text" class="form-control" id="phase.eight" placeholder="Phase 8" value="{{ projectSetting.phase.eight }}">
+              </div>
+              <div class="form-group">
+                <label for="phase.nine">Phase 9</label>
+                <input name="phase.nine" type="text" class="form-control" id="phase.nine" placeholder="Phase 9" value="{{ projectSetting.phase.nine }}">
+              </div>
+              <div class="form-group">
+                <label for="phase.ten">Phase 10</label>
+                <input name="phase.ten" type="text" class="form-control" id="phase.ten" placeholder="Phase 10" value="{{ projectSetting.phase.ten }}">
+              </div>
+              <input name="_id" type="hidden" value="{{ projectSetting._id }}" />
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div> <!-- / .row -->
+  </div> <!-- / .container-fluid -->
+{% endblock content %}

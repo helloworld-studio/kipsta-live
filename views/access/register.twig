@@ -1,0 +1,102 @@
+{% extends 'access/layout/base.twig' %}
+
+{% block content %}
+<!-- CONTENT
+================================================== -->
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-5 col-xl-4">
+
+      <!-- Heading -->
+      <h1 class="display-4 text-center mb-3">
+        Sign up
+      </h1>
+
+      <!-- Subheading -->
+      <p class="text-muted text-center mb-5">
+        Free access to our dashboard.
+      </p>
+
+      <!-- Form -->
+      <form method="POST" action="/register">
+        <!-- Firstname -->
+        <div class="form-group">
+
+          <!-- Label -->
+          <label>
+            Firstname
+          </label>
+
+          <!-- Input -->
+          <input name="firstname" type="text" class="form-control" placeholder="Firstname">
+
+        </div>
+
+        <!-- Lastname -->
+        <div class="form-group">
+
+          <!-- Label -->
+          <label>
+            Lastname
+          </label>
+
+          <!-- Input -->
+          <input name="lastname" type="text" class="form-control" placeholder="Lastname">
+
+        </div>
+
+        <!-- Email address -->
+        <div class="form-group">
+
+          <!-- Label -->
+          <label>
+            Email Address
+          </label>
+
+          <!-- Input -->
+          <input name="email" type="email" class="form-control" placeholder="name@address.com">
+
+        </div>
+
+        <!-- Password -->
+        <div class="form-group">
+
+          <!-- Label -->
+          <label>
+            Password
+          </label>
+
+          <!-- Input group -->
+          <div class="input-group input-group-merge">
+
+            <!-- Input -->
+            <input name="password" type="password" class="form-control form-control-appended" placeholder="Enter your password">
+
+            <!-- Icon -->
+            <div class="input-group-append">
+              <span class="input-group-text">
+                <i class="fe fe-eye"></i>
+              </span>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Submit -->
+        <button class="btn btn-lg btn-block btn-primary mb-3">
+          Sign up
+        </button>
+
+        <!-- Link -->
+        <div class="text-center">
+          <small class="text-muted text-center">
+            Already have an account? <a href="/login">Log in</a>.
+          </small>
+        </div>
+
+      </form>
+
+    </div>
+  </div> <!-- / .row -->
+</div> <!-- / .container -->
+{% endblock content %}

@@ -1,0 +1,48 @@
+{
+	"debug": false,
+	"port": "1612",
+	"url": "http://localhost:1612",
+	"secret": "kipsta-live",
+	"mongo": {
+		"replicaSet": "Local",
+		"bdd": "kipsta-live",
+		"user": "kipsta-live",
+		"password": "ysjvxpezb4dgz8w3ez",
+		"hosts": [
+			{
+				"host": "localhost",
+				"port": "27017"
+			}
+		]
+	},
+	"api": {
+		"url": "https://api.helloworld-studio.com/api/1.0",
+		"token": "86721a0065c684ea0d634fc0121d926ce89cf467f85b25f9a9967c87622ed36e3e275227f707625d7f5fc00d93d7b7ddee15ba0fa124103ff4571ef7f98dbbb6"
+	},
+	"sendgrid": {
+		"auth": {
+			"api_key": "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"
+		}
+	},
+	"facebook": {
+		"organizer": {
+			"name": "pberghof",
+			"id": 1160218740733925
+		}
+	},
+	"filters": {
+		"exclude": {
+			"organizer": true
+		},
+		"profanity": {
+			"description": true
+		}
+	},
+	"whitelist": {
+		"users": ["phobbynote", "phobbynote2", "flobby0"]
+	},
+	"blacklist": {
+		"users": ["tomg_"],
+		"words": ["likeabird"]
+	}
+}

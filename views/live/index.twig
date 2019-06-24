@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang=fr class="font-base font-medium text-base">
+
+<head>
+  <meta charset=utf-8>
+  <meta name=viewport content="width=device-width,initial-scale=1">
+
+  <title>Kipsta Llive</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:500,900&display=swap" rel=stylesheet>
+  <link href=/css/app.e8bb5b20.css rel=preload as=style>
+  <link href=/js/app.8ca0c65b.js rel=preload as=script>
+  <link href=/js/chunk-vendors.c1ebb5eb.js rel=preload as=script>
+  <link href=/css/app.e8bb5b20.css rel=stylesheet>
+</head>
+<body>
+  <div id=app></div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src=/js/chunk-vendors.c1ebb5eb.js></script>
+  <script src=/js/app.8ca0c65b.js></script>
+  <script type="text/javascript">
+    var socket = io.connect('{{ url }}');
+    socket.on('select', function (user) {
+      kipsta.addComment(user);
+    });
+    socket.on('removeSelect', function (user) {
+      kipsta.removeComment(user.id);
+    });
+    socket.on('addWinner', function (user) {
+      kipsta.addWinner(user);
+    });
+    socket.on('setWinner', function (user) {
+      kipsta.setCommentIsWinner(user.id, true);
+    });
+    socket.on('removeWinner', function (user) {
+      kipsta.removeComment(user.id);
+    });
+    socket.on('start', function () {
+      kipsta.showGameScreen();
+    });
+    socket.on('stop', function () {
+      kipsta.showWinnersScreen();
+    });
+  </script>
+</body>
+</html>

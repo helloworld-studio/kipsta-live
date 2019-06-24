@@ -1,0 +1,26 @@
+{
+  "apps": [{
+    "name": "kipsta-live",
+    "script": "index.js",
+    "log_date_format": "YYYY-MM-DD HH:mm",
+    "watch": false,
+    "merge_logs": true,
+    "user": "nodejs",
+    "cwd": "/home/site/www/app/kipsta-live",
+    "autorestart": true,
+    "max_restarts": "10",
+    "min_uptime": "10s",
+    "interpreter": "/root/.nvm/versions/node/v6.10.0/bin/node",
+    "error_file": "/var/log/nodejs/kipsta-live-err.log",
+    "out_file": "/var/log/nodejs/kipsta-live-out.log",
+    "env": {
+      "COMMON_VARIABLE": "true"
+    },
+    "env_production": {
+      "NODE_ENV": "production"
+    },
+    "env_development": {
+      "NODE_ENV": "development"
+    }
+  }]
+}

@@ -1,0 +1,205 @@
+{% extends 'dashboard/layout/base.twig' %}
+
+{% block content %}
+  <!-- CARDS -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 col-lg-6 col-xl">
+
+        <!-- Card -->
+        <div class="card">
+          <div class="card-body">
+            <div class="row align-items-center">
+              <div class="col">
+
+                <!-- Title -->
+                <h6 class="card-title text-uppercase text-muted mb-2">
+                  Comments
+                </h6>
+
+                <!-- Heading -->
+                <span class="h2 mb-0">
+                  {{ nb_comments + nb_selected }}
+                </span>
+
+              </div>
+              <div class="col-auto">
+
+                <!-- Icon -->
+                <span class="h2 fe fe-message-square text-muted mb-0"></span>
+
+              </div>
+            </div> <!-- / .row -->
+
+          </div>
+        </div>
+
+      </div>
+      <div class="col-12 col-lg-6 col-xl">
+
+        <!-- Card -->
+        <div class="card">
+          <div class="card-body">
+            <div class="row align-items-center">
+              <div class="col">
+
+                <!-- Title -->
+                <h6 class="card-title text-uppercase text-muted mb-2">
+                  Unique Users
+                </h6>
+
+                <!-- Heading -->
+                <span class="h2 mb-0">
+                  {{ nb_users }}
+                </span>
+
+              </div>
+              <div class="col-auto">
+
+                <!-- Icon -->
+                <span class="h2 fe fe-users text-muted mb-0"></span>
+
+              </div>
+            </div> <!-- / .row -->
+
+          </div>
+        </div>
+
+      </div>
+      <div class="col-12 col-lg-6 col-xl">
+
+        <!-- Card -->
+        <div class="card">
+          <div class="card-body">
+            <div class="row align-items-center">
+              <div class="col">
+
+                <!-- Title -->
+                <h6 class="card-title text-uppercase text-muted mb-2">
+                  Selected
+                </h6>
+
+                <!-- Heading -->
+                <span class="h2 mb-0">
+                  {{ nb_selected }}
+                </span>
+
+              </div>
+              <div class="col-auto">
+
+                <!-- Icon -->
+                <span class="h2 fe fe-unlock text-muted mb-0"></span>
+
+              </div>
+            </div> <!-- / .row -->
+
+          </div>
+        </div>
+
+      </div>
+    </div> <!-- / .row -->
+    <div class="row">
+      <div class="col-12 col-lg-6 col-xl">
+
+        <!-- Card -->
+        <div class="card">
+          <div class="card-body">
+            <div class="row align-items-center">
+              <div class="col">
+
+                <!-- Title -->
+                <h6 class="card-title text-uppercase text-muted mb-2">
+                  Edited Comments
+                </h6>
+
+                <!-- Heading -->
+                <span class="h2 mb-0">
+                  {{ nb_edited }}
+                </span>
+
+              </div>
+              <div class="col-auto">
+
+                <!-- Icon -->
+                <span class="h2 fe fe-edit text-muted mb-0"></span>
+
+              </div>
+            </div> <!-- / .row -->
+
+          </div>
+        </div>
+
+      </div>
+      <div class="col-12 col-lg-6 col-xl">
+
+        <!-- Card -->
+        <div class="card">
+          <div class="card-body">
+            <div class="row align-items-center">
+              <div class="col">
+
+                <!-- Title -->
+                <h6 class="card-title text-uppercase text-muted mb-2">
+                  Deleted Comments
+                </h6>
+
+                <!-- Heading -->
+                <span class="h2 mb-0">
+                  {{ nb_deleted }}
+                </span>
+
+              </div>
+              <div class="col-auto">
+
+                <!-- Icon -->
+                <span class="h2 fe fe-trash text-muted mb-0"></span>
+
+              </div>
+            </div> <!-- / .row -->
+
+          </div>
+        </div>
+
+      </div>
+      <div class="col-12 col-lg-6 col-xl">
+
+        <!-- Card -->
+        <div class="card">
+          <div class="card-body">
+            <div class="row align-items-center">
+              <div class="col">
+
+                <!-- Title -->
+                <h6 class="card-title text-uppercase text-muted mb-2">
+                  Moderate Comments
+                </h6>
+
+                <!-- Heading -->
+                <span class="h2 mb-0">
+                  {{ nb_moderated }}
+                </span>
+
+              </div>
+              <div class="col-auto">
+
+                <!-- Icon -->
+                <span class="h2 fe fe-lock text-muted mb-0"></span>
+
+              </div>
+            </div> <!-- / .row -->
+
+          </div>
+        </div>
+
+      </div>
+    </div> <!-- / .row -->
+    <div class="row">
+      <a href="/dashboard/start" class="btn btn-sm btn-primary">
+        Start live
+      </a>
+      <a href="/dashboard/stop" class="btn btn-sm btn-primary">
+        Stop live
+      </a>
+    </div>
+  </div> <!-- / .container-fluid -->
+{% endblock content %}

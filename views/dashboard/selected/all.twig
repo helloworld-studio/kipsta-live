@@ -1,0 +1,166 @@
+{% extends 'dashboard/layout/base.twig' %}
+
+{% block content %}
+  <!-- CARDS -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 col-xl-12">
+
+        <!-- Goals -->
+        <div class="card">
+          <div class="card-header">
+            <div class="row align-items-center">
+              <div class="col">
+
+                <!-- Title -->
+                <h4 class="card-header-title">
+                  Selected List
+                </h4>
+
+              </div>
+            </div> <!-- / .row -->
+          </div>
+          <div class="card-header">
+
+            <!-- Form -->
+            <form method="get" action="/dashboard/selected/">
+              <div class="input-group input-group-flush input-group-merge">
+                <input name="search" type="search" class="form-control form-control-prepended search" placeholder="Search" value="{{ search }}">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <span class="fe fe-search"></span>
+                  </div>
+                </div>
+              </div>
+            </form>
+
+          </div>
+          <div class="table-responsive mb-0" data-toggle="lists" data-lists-values='["name", "message", "createdat"]'>
+            <table class="table table-sm table-nowrap card-table">
+              <thead>
+                <tr>
+                  <th>
+                    Picture
+                  </th>
+                  <th>
+                    <a href="#" class="text-muted sort" data-sort="name">
+                      Name
+                    </a>
+                  </th>
+                  <th>
+                    <a href="#" class="text-muted sort" data-sort="message">
+                      Message
+                    </a>
+                  </th>
+                  <th>
+                    <a href="#" class="text-muted sort" data-sort="link">
+                      Link
+                    </a>
+                  </th>
+                  <th>
+                    <a href="#" class="text-muted sort" data-sort="createdat">
+                      Created at
+                    </a>
+                  </th>
+                  <th>
+                    Selected
+                  </th>
+                  <th>
+                    Winner
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="list">
+                {% for comment in comments %}
+                <tr>
+                  <td>
+                    <a href="#!" class="avatar avatar-lg" data-toggle="tooltip" title="{{ comment.value.from.name }}">
+                      <img src="{{ comment.value.from.profile_pic }}" class="avatar-img rounded-circle border border-white" alt="...">
+                    </a>
+                  </td>
+                  <td class="name align-middle">
+                    {{ comment.value.from.name }}
+                  </td>
+                  <td class="message align-middle">
+                    {{ comment.value.message }}
+                  </td>
+                  <td class="code align-middle">
+                    <a href="{{ comment.value.post.permalink_url }}" target=_blank>Voir</a>
+                  </td>
+                  <td class="createdat align-middle">
+                    <time datetime="{{ comment.value.post.updated_time|date("d/m/Y") }}">{{ comment.value.post.updated_time|date("d/m/Y") }}</time>
+                  </td>
+                  <td class="align-middle">
+                    <span class="custom-control custom-checkbox-toggle">
+                      <input type="checkbox" onchange="changeEtat(this);" class="custom-control-input" name="{{ comment._id }}" id="{{ comment._id }}" {% if comment.selected == true %} checked="checked" {% endif %}>
+                      <label class="custom-control-label" for="{{ comment._id }}"></label>
+                    </span>
+                  </td>
+                  <td class="align-middle">
+                    <span class="custom-control custom-checkbox-toggle">
+                      <input type="checkbox" onchange="changeWin(this);" class="custom-control-input" name="{{ comment._id }}" id="win{{ comment._id }}" {% if comment.winner == true %} checked="checked" {% endif %}>
+                      <label class="custom-control-label" for="win{{ comment._id }}"></label>
+                    </span>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div> <!-- / .row -->
+    {% if nb_pages > 1 %}
+    <div class="row">
+      <div class="col-12 col-xl-12">
+        <nav aria-label="Page navigation example" class="float-right">
+          <ul class="pagination pagination-sm">
+            <li class="page-item {% if (current_page - 1) == 0 %} disabled {% endif %}"><a class="page-link" href="/dashboard/selected/?page={{ current_page - 1 }}">Previous</a></li>
+            {% for i in 1..nb_pages %}
+            {% if 0 < (current_page - pageLimit) - loop.index %}
+            {% elseif 0 > (current_page + pageLimit) - loop.index %}
+            {% else %}
+            <li class="page-item {% if i == current_page %}active{% endif %}"><a class="page-link" href="/dashboard/selected/?page={{ i }}">{{ i }} {% if i == current_page %}<span class="sr-only">(current)</span>{% endif %}</a></li>
+            {% endif %}
+            {% endfor %}
+            <li class="page-item {% if current_page == nb_pages %} disabled {% endif %}"><a class="page-link" href="/dashboard/selected/?page={{ current_page + 1 }}">Next</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    {% endif %}
+  </div> <!-- / .container-fluid -->
+  <script type="text/javascript">
+    function changeEtat(elem) {
+      $.ajax({
+        type: "POST",
+        url: '/dashboard/comments/select',
+        data: { _id: $(elem).attr('name'), selected: $(elem).is(':checked') },
+        dataType: 'json'
+      })
+      .done(function() {
+        $(elem).parent('.custom-control').parent('td.align-middle').parent('tr').remove();
+        var nb_selected = parseInt($('ul.navbar-nav li.selected a.nav-link .badge').html());
+        $('ul.navbar-nav li.selected a.nav-link .badge').html(nb_selected-1);
+        var nb_comments = parseInt($('ul.navbar-nav li.comments a.nav-link .badge').html());
+        $('ul.navbar-nav li.comments a.nav-link .badge').html(nb_comments+1);
+      });
+    }
+    function changeWin(elem) {
+      $.ajax({
+        type: "POST",
+        url: '/dashboard/comments/editselect',
+        data: { _id: $(elem).attr('name'), winner: $(elem).is(':checked') },
+        dataType: 'json'
+      })
+      .done(function() {
+        $(elem).parent('.custom-control').parent('td.align-middle').parent('tr').remove();
+        var nb_selected = parseInt($('ul.navbar-nav li.selected a.nav-link .badge').html());
+        $('ul.navbar-nav li.selected a.nav-link .badge').html(nb_selected-1);
+        var nb_winners = parseInt($('ul.navbar-nav li.winners a.nav-link .badge').html());
+        $('ul.navbar-nav li.winners a.nav-link .badge').html(nb_winners+1);
+      });
+    }
+  </script>
+{% endblock content %}

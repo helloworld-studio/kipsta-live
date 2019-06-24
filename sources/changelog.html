@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    @@include("partials/head.html", {
+      "title": "Dashkit"
+    })
+  </head>
+  <body>
+
+    <!-- MODALS
+    ================================================== -->
+    @@include("partials/modals.html")
+
+    <!-- SIDEBAR
+    ================================================== -->
+    @@include("partials/sidebar.html", {
+      "category": "",
+      "subcategory": "",
+      "page": "changelog.html",
+      "user": true
+    })
+
+    <!-- MAIN CONTENT
+    ================================================== -->
+    <div class="main-content">
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div class="col-12 col-lg-10 col-xl-8">
+
+              <!-- Header -->
+              <div class="header mt-md-5">
+                <div class="header-body">
+
+                  <!-- Pretitle -->
+                  <h6 class="header-pretitle">
+                    Documentation
+                  </h6>
+  
+                  <!-- Title -->
+                  <h1 class="header-title">
+                    Changelog
+                  </h1>
+
+                </div>
+              </div>
+
+              <h2 class="d-inline-block"><span class="badge badge-soft-primary mt--1">v1.0</span></h2><span class="text-muted"> – July 25th, 2018</span>
+              <p>Initial release of Dashkit! Lots more coming soon though 😁</p>
+
+          </div>
+        </div> <!-- / .row -->
+      </div> <!-- / .container-fluid -->
+    </div> <!-- / .main-content -->
+
+    <!-- JAVASCRIPT
+    ================================================== -->
+    @@include("partials/scripts.html")
+
+  </body>
+</html>

@@ -11,7 +11,6 @@ const settingModel = require('models/setting');
 
 var facebook = {
   verif: function (src) {
-    console.log(src);
     async.parallel({
       feed: function(cb) {
         filter.feed(src, cb);
